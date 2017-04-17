@@ -2,7 +2,9 @@ package search;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Graph implements Iterable<Point>{
@@ -10,9 +12,17 @@ public class Graph implements Iterable<Point>{
 	public ArrayList<Point> _graph;								//Graph as a list of points
 	
 	public Graph(){_graph = new ArrayList<Point>();}			//class constructor
+	public Graph(ArrayList<Point> g){_graph = (ArrayList<Point>) g;}
 	
-	public void clear(){_graph.clear();}						//clear graph
+	
+	public void clear(){_graph.clear();}	//clear graph
 	public Point getPoint(int i){return _graph.get(i);}			//gets Point at index i
+	public int length(){return _graph.size();}
+	public Graph copyRangeOf(int i){return  new Graph((ArrayList<Point>) _graph.subList(0, i));}
+	
+	public ArrayList<Point> sort(Comparator<Point> c){
+		_graph.sort(c);
+		return _graph;}
 	
 	/**
 	 * Adds a new point to the graph
@@ -30,7 +40,7 @@ public class Graph implements Iterable<Point>{
 	 * @param p2	Second point
 	 * @return		distance between points
 	 */
-	public double distance(Point p1, Point p2){
+	public static double distance(Point p1, Point p2){
 		double x1 = p1.getX();
 		double y1 = p1.getY();
 		double x2 = p2.getX();

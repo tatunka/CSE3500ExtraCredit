@@ -2,11 +2,11 @@ package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.Clock;
-
 import search.Graph;
 import search.Point;
-import search.SimpleShortest;
+import search.PxComp;
+import search.PyComp;
+import search.SPath;
 
 public class Main {
 
@@ -16,24 +16,76 @@ public class Main {
 		
 		g.createGraph(file);
 		
-		Point[] shortest = SimpleShortest.simpleFind(g, 1000);
+		System.out.print("For 1,000 points: ");
+		long start = System.nanoTime();
+		Point[] shortest = SPath.simpleFind(g, 1000);
+		long stop = System.nanoTime();
+		long elapsed = stop - start;
+		System.out.println(elapsed + " ns");
 		System.out.println(shortest[0].toString());
 		System.out.println(shortest[1].toString());
-		System.out.println(g.distance(shortest[0], shortest[1]));
+		System.out.println(SPath.distance(shortest));
 		System.out.println();
 		
-		shortest = SimpleShortest.simpleFind(g, 10000);
+		System.out.print("For 10,000 points: ");
+		start = System.nanoTime();
+		shortest = SPath.simpleFind(g, 10000);
+		stop = System.nanoTime();
+		elapsed = stop - start;
+		System.out.println(elapsed + " ns");
 		System.out.println(shortest[0].toString());
 		System.out.println(shortest[1].toString());
-		System.out.println(g.distance(shortest[0], shortest[1]));
+		System.out.println(SPath.distance(shortest));
 		System.out.println();
 		
-		shortest = SimpleShortest.simpleFind(g, 100000);
+		
+		System.out.print("For 100,000 points: ");
+		start = System.nanoTime();
+		shortest = SPath.simpleFind(g, 100000);
+		stop = System.nanoTime();
+		elapsed = stop - start;
+		System.out.println(elapsed + " ns");
 		System.out.println(shortest[0].toString());
 		System.out.println(shortest[1].toString());
-		System.out.println(g.distance(shortest[0], shortest[1]));
+		System.out.println(SPath.distance(shortest));
+		System.out.println();
 		
 		
+		Graph g1000 = g.copyRangeOf(1000);
+		System.out.print("For 1,000 points: ");
+		start = System.nanoTime();
+		shortest = SPath.msClosest(g1000);
+		stop = System.nanoTime();
+		elapsed = stop - start;
+		System.out.println(elapsed + " ns");
+		System.out.println(shortest[0].toString());
+		System.out.println(shortest[1].toString());
+		System.out.println(SPath.distance(shortest));
+		System.out.println();
+		
+		Graph g10000 = g.copyRangeOf(10000);
+		System.out.print("For 10,000 points: ");
+		start = System.nanoTime();
+		shortest = SPath.msClosest(g10000);
+		stop = System.nanoTime();
+		elapsed = stop - start;
+		System.out.println(elapsed + " ns");
+		System.out.println(shortest[0].toString());
+		System.out.println(shortest[1].toString());
+		System.out.println(SPath.distance(shortest));
+		System.out.println();
+		
+		Graph g100000 = g.copyRangeOf(100000);
+		System.out.print("For 100,000 points: ");
+		start = System.nanoTime();
+		shortest = SPath.msClosest(g100000);
+		stop = System.nanoTime();
+		elapsed = stop - start;
+		System.out.println(elapsed + " ns");
+		System.out.println(shortest[0].toString());
+		System.out.println(shortest[1].toString());
+		System.out.println(SPath.distance(shortest));
+		System.out.println();
 		
 	}
 
