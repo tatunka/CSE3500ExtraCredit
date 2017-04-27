@@ -12,13 +12,16 @@ public class Point {
 	}
 	
 	//getters
-	public double getX(){return _x;}
-	public double getY(){return _y;}
+	public double getX(){return _x;}				//return x coordinate
+	public double getY(){return _y;}				//return y coordinate
 	
-	public String toString(){
-		return _x.toString() + ",   " + _y.toString();
-	}
+	public String toString(){return _x.toString() + ",   " + _y.toString();}		//toString method
 	
+	/**
+	 * Finds if this Point is equal to another Point or itself
+	 * @param p			Point
+	 * @return			if Points are equal
+	 */
 	public boolean equals(Point p){
 		if(_x != p.getX())
 			return false;

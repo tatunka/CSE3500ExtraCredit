@@ -5,19 +5,25 @@ import java.util.Arrays;
 
 public class SPath {
 	
+	/**
+	 * Finds the shortest path between two points of a graph by looping through every
+	 * possible pairing
+	 * @param g		Graph
+	 * @return		Points with shortest distance
+	 */
 	public static Point[] simpleFind(Graph g){
 		Point[] sPoints = new Point[2];
-		Double shortest = 999999999999999999999999999999999999999.9;
+		Double shortest = 999999999999999999999999999999999999999.9;	//keep track of shortest distance
 		Point s1 = null;
 		Point s2 = null;
-		for(int i=0; i<g.length(); i++){
+		for(int i=0; i<g.length(); i++){			//for every point in g
 			Point p1 = g.getPoint(i);
-			for(Point p2 : g){
-				if(p1.equals(p2))
+			for(Point p2 : g){						//for every other point in g
+				if(p1.equals(p2))					//skip if node is itself
 					continue;
-				double distance = Graph.distance(p1, p2);
-				if(distance < shortest){
-					shortest = distance;
+				double distance = Graph.distance(p1, p2);		//distance between these points
+				if(distance < shortest){						
+					shortest = distance;						//new shortest distance if found
 					s1 = p1;
 					s2 = p2;
 				}
@@ -28,18 +34,24 @@ public class SPath {
 		return sPoints;
 	}
 	
+	/**
+	 * Finds the minimum distance between two points in a set of Points
+	 * @param p		set of Points
+	 * @param n		how many points to try
+	 * @return		Points with shortest distance
+	 */
 	private static Point[] minPoints(Point[] p, int n){
 		Point[] sPoints = new Point[2];
-		Double shortest = 999999999999999999999999999999999999999.9;
+		Double shortest = 999999999999999999999999999999999999999.9;	//keep track of shortest distance
 		Point s1 = null;
 		Point s2 = null;
-		for(int i=0; i<p.length; i++){
-			for(int j=0; j<n; j++){
+		for(int i=0; i<p.length; i++){									//for every point in g
+			for(int j=0; j<n; j++){										//for every other point in g
 				if(p[i].equals(p[j]))
 					continue;
-				double distance = Graph.distance(p[i], p[j]);
+				double distance = Graph.distance(p[i], p[j]);			//find distance
 				if(distance < shortest){
-					shortest = distance;
+					shortest = distance;								//new distance if found
 					s1 = p[i];
 					s2 = p[j];
 				}
@@ -50,10 +62,20 @@ public class SPath {
 		return sPoints;
 	}
 	
+	/**
+	 * Finds minimum distance between two points in a set of Points
+	 * @param p		set of Points
+	 * @return		Points with minimum distance
+	 */
 	private static Point[] minPoints(Point[] p){
 		return minPoints(p, p.length);
 	}
 	
+	/**
+	 * Recursively finds the closest Points on a graph using divide and conquer
+	 * @param g			Graph
+	 * @return			Points with shortest distance
+	 */
 	public static Point[] msClosest(Graph g){
 		Point[] p = new Point[g.length()];
 		p = g._graph.toArray(p);
@@ -66,6 +88,12 @@ public class SPath {
 		return recClosest(px, py);
 	}
 	
+	/**
+	 * Called by msClosest to divide and conquer to find two points
+	 * @param px		set of Points sorted by x coordinate value
+	 * @param py		set of Points sorted by y coordinate value
+	 * @return			Points with shortest distance
+	 */
 	private static Point[] recClosest(Point[] px, Point[] py){
 		PyComp y = new PyComp();
 	//if |P| <= 3 then
@@ -114,5 +142,10 @@ public class SPath {
 			
 	}
 	
+	/**
+	 * Distance between two points in set of 2 minimal distance points
+	 * @param p		set with two points of minimal distance
+	 * @return		distance
+	 */
 	public static double distance(Point[] p){return Graph.distance(p[0], p[1]);}
 }

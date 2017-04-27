@@ -13,15 +13,13 @@ public class Graph implements Iterable<Point>{
 	public Graph(){_graph = new ArrayList<Point>();}					//class constructor
 	public Graph(ArrayList<Point> g){_graph = (ArrayList<Point>) g;}	//class constructor
 	
-	
-	public void clear(){_graph.clear();}	//clear graph
 	public Point getPoint(int i){return _graph.get(i);}			//gets Point at index i
-	public int length(){return _graph.size();}
+	public int length(){return _graph.size();}					//return graph size
 	
 	/**
-	 * Creates a new graph f
-	 * @param i
-	 * @return
+	 * Copies graph and puts first i point in new graph
+	 * @param i			end index
+	 * @return			new graph of size i
 	 */
 	public Graph copyRangeOf(int i){
 		ArrayList<Point> graph = new ArrayList<>();
@@ -30,9 +28,15 @@ public class Graph implements Iterable<Point>{
 		return  new Graph(graph);
 		}
 	
+	/**
+	 * sorts graph by given comparator
+	 * @param c		comparator
+	 * @return		sorted graph
+	 */
 	public ArrayList<Point> sort(Comparator<Point> c){
 		_graph.sort(c);
-		return _graph;}
+		return _graph;
+	}
 	
 	/**
 	 * Adds a new point to the graph

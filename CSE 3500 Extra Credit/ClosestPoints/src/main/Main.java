@@ -11,9 +11,9 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException{
 		File file = new File("src/xy.csv");
 		Graph g = new Graph();
-		g.createGraph(file);
-		Graph g1000 = g.copyRangeOf(1000);
-		Graph g10000 = g.copyRangeOf(10000);
+		g.createGraph(file);										//create new graph from file
+		Graph g1000 = g.copyRangeOf(1000);							//first 1,000 points
+		Graph g10000 = g.copyRangeOf(10000);						//first 10,000 points
 		
 		System.out.print("For 1,000 points with loops: ");
 		long start = System.nanoTime();
