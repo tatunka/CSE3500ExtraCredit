@@ -13,8 +13,10 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException{
 		File file = new File("src/xy.csv");
 		Graph g = new Graph();
-		
 		g.createGraph(file);
+		Graph g1000 = g.copyRangeOf(1000);
+		Graph g10000 = g.copyRangeOf(10000);
+		Graph g100000 = g.copyRangeOf(100000);
 		
 		System.out.print("For 1,000 points: ");
 		long start = System.nanoTime();
@@ -50,8 +52,6 @@ public class Main {
 		System.out.println(SPath.distance(shortest));
 		System.out.println();
 		
-		
-		Graph g1000 = g.copyRangeOf(1000);
 		System.out.print("For 1,000 points: ");
 		start = System.nanoTime();
 		shortest = SPath.msClosest(g1000);
@@ -63,7 +63,6 @@ public class Main {
 		System.out.println(SPath.distance(shortest));
 		System.out.println();
 		
-		Graph g10000 = g.copyRangeOf(10000);
 		System.out.print("For 10,000 points: ");
 		start = System.nanoTime();
 		shortest = SPath.msClosest(g10000);
@@ -75,7 +74,6 @@ public class Main {
 		System.out.println(SPath.distance(shortest));
 		System.out.println();
 		
-		Graph g100000 = g.copyRangeOf(100000);
 		System.out.print("For 100,000 points: ");
 		start = System.nanoTime();
 		shortest = SPath.msClosest(g100000);

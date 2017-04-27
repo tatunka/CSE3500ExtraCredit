@@ -18,7 +18,13 @@ public class Graph implements Iterable<Point>{
 	public void clear(){_graph.clear();}	//clear graph
 	public Point getPoint(int i){return _graph.get(i);}			//gets Point at index i
 	public int length(){return _graph.size();}
-	public Graph copyRangeOf(int i){return  new Graph((ArrayList<Point>) _graph.subList(0, i));}
+	
+	public Graph copyRangeOf(int i){
+		ArrayList<Point> graph = new ArrayList<>();
+		for(int j=0; j<i; j++)
+			graph.add(_graph.get(j));
+		return  new Graph(graph);
+		}
 	
 	public ArrayList<Point> sort(Comparator<Point> c){
 		_graph.sort(c);
@@ -32,7 +38,7 @@ public class Graph implements Iterable<Point>{
 	public Point addPoint(Point p){
 		_graph.add(p);
 		return p;
-		}				//add new point
+		}
 	
 	/**
 	 * Finds distance between two points on 2-D Cartesian graph.
