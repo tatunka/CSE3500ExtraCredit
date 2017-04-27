@@ -16,7 +16,7 @@ public class Point {
 	public double getY(){return _y;}
 	
 	public String toString(){
-		return _x.toString() + "," + _y.toString();
+		return _x.toString() + ",   " + _y.toString();
 	}
 	
 	public boolean equals(Point p){

@@ -4,24 +4,28 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class Graph implements Iterable<Point>{
 	
 	public ArrayList<Point> _graph;								//Graph as a list of points
 	
-	public Graph(){_graph = new ArrayList<Point>();}			//class constructor
-	public Graph(ArrayList<Point> g){_graph = (ArrayList<Point>) g;}
+	public Graph(){_graph = new ArrayList<Point>();}					//class constructor
+	public Graph(ArrayList<Point> g){_graph = (ArrayList<Point>) g;}	//class constructor
 	
 	
 	public void clear(){_graph.clear();}	//clear graph
 	public Point getPoint(int i){return _graph.get(i);}			//gets Point at index i
 	public int length(){return _graph.size();}
 	
+	/**
+	 * Creates a new graph f
+	 * @param i
+	 * @return
+	 */
 	public Graph copyRangeOf(int i){
 		ArrayList<Point> graph = new ArrayList<>();
-		for(int j=0; j<i; j++)
+		for(int j=0; j<=i; j++)
 			graph.add(_graph.get(j));
 		return  new Graph(graph);
 		}

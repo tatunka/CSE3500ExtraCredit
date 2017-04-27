@@ -5,12 +5,12 @@ import java.util.Arrays;
 
 public class SPath {
 	
-	public static Point[] simpleFind(Graph g, int number){
+	public static Point[] simpleFind(Graph g){
 		Point[] sPoints = new Point[2];
 		Double shortest = 999999999999999999999999999999999999999.9;
 		Point s1 = null;
 		Point s2 = null;
-		for(int i=0; i<number; i++){
+		for(int i=0; i<g.length(); i++){
 			Point p1 = g.getPoint(i);
 			for(Point p2 : g){
 				if(p1.equals(p2))

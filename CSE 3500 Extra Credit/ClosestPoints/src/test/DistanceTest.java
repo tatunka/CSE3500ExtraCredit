@@ -11,10 +11,10 @@ public class DistanceTest {
 		Point p3 = new Point(4.0, 4.0);
 		Point p4 = new Point(16.0, 16.0);
 		
-		System.out.println(g.distance(p1, p2));
-		System.out.println(g.distance(p1, p3));
-		System.out.println(g.distance(p1, p4));
-		System.out.println(g.distance(p2, p3));
+		System.out.println(Graph.distance(p1, p2));
+		System.out.println(Graph.distance(p1, p3));
+		System.out.println(Graph.distance(p1, p4));
+		System.out.println(Graph.distance(p2, p3));
 		
 	}
 }
